@@ -1,6 +1,6 @@
 // Spread used to split up array elements OR object properties
 const numbers = [1, 2, 3];
-const newNumbers = [...numbers, 4];
+const newNumbers = [...numbers, numbers[0] = 4];
 
 console.log(newNumbers);
 
@@ -13,11 +13,11 @@ const newPerson = {
     age: 23
 }
 
-console.log(newPerson);
+//console.log(newPerson);
 
 // Rest used to merge a list of c function arguments into an array
 const filter = (...args) => {
     return args.filter(el => el === 2);
 }
 
-console.log(filter(1, 2, 3, 2));
+//console.log(filter(1, 2, 3, 2));
