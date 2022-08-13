@@ -27,7 +27,7 @@ function ExpenseForm(props) {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     expenseData.date.setUTCHours(4);
@@ -73,6 +73,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div>
+        <button type="button" onClick={props.onCancel}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
