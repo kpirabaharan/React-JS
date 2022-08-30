@@ -16,8 +16,8 @@ const newPerson = {
 //console.log(newPerson);
 
 // Rest used to merge a list of c function arguments into an array
-const filter = (...args) => {
-    return args.filter(el => el === 2);
+const toArray = (...args) => {
+    return args;
 }
 
-//console.log(filter(1, 2, 3, 2));
+console.log(toArray(1, 2, 3, 2));

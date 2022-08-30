@@ -1,2 +1,2 @@
 # React
-Learning React
+Consolidated React Projects
