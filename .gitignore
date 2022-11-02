@@ -2,3 +2,4 @@
 Projects/
 .idea/
 .tmp.driveupload
+*.eslintcache
