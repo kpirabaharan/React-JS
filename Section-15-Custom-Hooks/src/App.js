@@ -7,7 +7,7 @@ import useHttp from './hooks/use-http';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const { isLoading, error, sendRequest: fetchTasks } = useHttp();
+  const { isLoading, error, sendRequest } = useHttp();
 
   useEffect(() => {
     const transformTasks = (tasksObj) => {
@@ -19,13 +19,13 @@ function App() {
 
       setTasks(loadedTasks);
     };
-    fetchTasks(
+    sendRequest(
       {
         url: 'https://react-course-custom-hook-6450f-default-rtdb.firebaseio.com/tasks.json',
       },
       transformTasks,
     );
-  }, [fetchTasks]);
+  }, [sendRequest]);
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
@@ -38,7 +38,7 @@ function App() {
         items={tasks}
         loading={isLoading}
         error={error}
-        onFetch={fetchTasks}
+        onFetch={sendRequest}
       />
     </React.Fragment>
   );
