@@ -1,27 +1,59 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+const initialInputState = {
+  value: '',
+  isTouched: false,
+};
+
+// State is previous state and action is current/next
+const inputStateReducer = (state, action) => {
+  if (action.type === 'INPUT') {
+    // Below we want value to update but isTouched to remain the same
+    return {
+      value: action.value,
+      isTouched: state.isTouched,
+    };
+  }
+  if (action.type === 'BLUR') {
+    return {
+      // Cannot use action.value because in the dispatch for 'BLUR' we didnt
+      // send a value to action
+      value: state.value,
+      isTouched: true,
+    };
+  }
+  if (action.type === 'RESET') {
+    return {
+      value: '',
+      isTouched: false,
+    };
+  }
+  return initialInputState;
+};
 
 const useInput = (validateValue) => {
-  const [enteredValue, setEnteredValue] = useState('');
-  const [isTouched, setIsTouched] = useState(false);
+  const [inputState, dispatch] = useReducer(
+    inputStateReducer,
+    initialInputState,
+  );
 
-  const valueIsValid = validateValue(enteredValue);
-  const hasError = !valueIsValid && isTouched;
+  const valueIsValid = validateValue(inputState.value);
+  const hasError = !valueIsValid && inputState.isTouched;
 
   const valueChangeHandler = (event) => {
-    setEnteredValue(event.target.value);
+    dispatch({ type: 'INPUT', value: event.target.value });
   };
 
   const inputBlurHandler = () => {
-    setIsTouched(true);
+    dispatch({ type: 'BLUR' });
   };
 
   const reset = () => {
-    setEnteredValue('');
-    setIsTouched(false);
+    dispatch({ type: 'RESET' });
   };
 
   return {
-    value: enteredValue,
+    value: inputState.value,
     isValid: valueIsValid,
     hasError,
     valueChangeHandler,
