@@ -12,7 +12,7 @@ const AvailableMeals = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        'https://react-course-foodapp-backend-default-rtdb.firebaseio.com/meals',
+        'https://react-course-foodapp-backend-default-rtdb.firebaseio.com/meals.json',
       );
 
       // Throwing a new error prevents remaining code from executing
