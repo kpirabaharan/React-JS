@@ -7,13 +7,15 @@ import classes from './AvailableMeals.module.css';
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState(null);
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        'https://react-course-foodapp-backend-default-rtdb.firebaseio.com/meals.json',
+        'https://react-course-foodapp-backend-default-rtdb.firebaseio.com/meals',
       );
 
+      // Throwing a new error prevents remaining code from executing
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
@@ -34,7 +36,15 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     };
-    fetchMeals();
+    // Put fetchMeals in a try catch to see if error occurs
+    // We know from if (!response.ok) check
+
+    // Since fetchMeals is an async function that gets a promise, traditional
+    // try catch won't work. We need to check using .catch(error).
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   const mealsList = meals.map((meal) => (
@@ -47,11 +57,20 @@ const AvailableMeals = () => {
     />
   ));
 
-  if(isLoading)
-  {
-    return <section className={classes.MealsLoading}>
-      <p>Loading...</p>
-    </section>
+  if (isLoading) {
+    return (
+      <section className={classes.MealsLoading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{httpError}</p>
+      </section>
+    );
   }
 
   return (
