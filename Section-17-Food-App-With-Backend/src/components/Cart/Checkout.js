@@ -1,4 +1,3 @@
-import { prependToMemberExpression } from '@babel/types';
 import React, { useRef, useState } from 'react';
 import classes from './Checkout.module.css';
 
@@ -84,7 +83,9 @@ const Checkout = (props) => {
       <div className={postalCodeControlClasses}>
         <label htmlFor="postal">Postal Code</label>
         <input type="text" id="postal" ref={postalCodeInputRef} />
-        {!formInputValidity.postalCode && <p>Please Enter a Valid Postal Code!</p>}
+        {!formInputValidity.postalCode && (
+          <p>Please Enter a Valid Postal Code!</p>
+        )}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
