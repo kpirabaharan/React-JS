@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authActions } from './store';
+import { authActions } from './store/auth';
 
 import Counter from './components/Counter';
 import Header from './components/Header';
