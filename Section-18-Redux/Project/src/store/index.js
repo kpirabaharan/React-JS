@@ -36,7 +36,8 @@ const authSlice = createSlice({
 // configureStore is a better way to deal with multiple reducers.
 // createStore is deprecated anyways
 const store = configureStore({
-  reducer: { counter: counterSlice.reducer, auth: authSlice.reducer }, // For mulitple reducers
+  // For mulitple reducers
+  reducer: { counter: counterSlice.reducer, auth: authSlice.reducer },
 });
 
 export const counterActions = counterSlice.actions;
