@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cart-slice';
 import classes from './CartItem.module.css';
 
-const CartItem = props => {
+const CartItem = (props) => {
   const dispatch = useDispatch();
 
   const { id, title, quantity, total, price } = props.item;
