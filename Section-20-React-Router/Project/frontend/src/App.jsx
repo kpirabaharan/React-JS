@@ -27,7 +27,7 @@ import HomePage from './routes/Home';
 import ErrorPage from './routes/Error';
 import EventsRootLayout from './routes/EventsRoot';
 import EventsPage, { loader as eventsLoader } from './routes/Events';
-import EventDetailPage from './routes/EventDetail';
+import EventDetailPage, { loader as eventLoader } from './routes/EventDetail';
 import EditEventPage from './routes/EditEvent';
 import NewEventPage from './routes/NewEvent';
 
@@ -48,7 +48,11 @@ function App() {
               element: <EventsPage />,
               loader: eventsLoader,
             },
-            { path: ':eventId', element: <EventDetailPage /> },
+            {
+              path: ':eventId',
+              element: <EventDetailPage />,
+              loader: eventLoader,
+            },
             { path: 'new', element: <NewEventPage /> },
             { path: ':eventId/edit', element: <EditEventPage /> },
           ],
