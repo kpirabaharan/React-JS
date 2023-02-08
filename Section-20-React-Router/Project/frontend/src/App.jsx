@@ -49,12 +49,18 @@ function App() {
               loader: eventsLoader,
             },
             {
+              id: 'event-detail',
               path: ':eventId',
-              element: <EventDetailPage />,
               loader: eventLoader,
+              children: [
+                {
+                  index: true,
+                  element: <EventDetailPage />,
+                },
+                { path: 'edit', element: <EditEventPage /> },
+              ],
             },
             { path: 'new', element: <NewEventPage /> },
-            { path: ':eventId/edit', element: <EditEventPage /> },
           ],
         },
       ],
