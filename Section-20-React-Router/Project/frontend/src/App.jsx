@@ -29,7 +29,7 @@ import EventsRootLayout from './routes/EventsRoot';
 import EventsPage, { loader as eventsLoader } from './routes/Events';
 import EventDetailPage, { loader as eventLoader } from './routes/EventDetail';
 import EditEventPage from './routes/EditEvent';
-import NewEventPage from './routes/NewEvent';
+import NewEventPage, { action as newEventAction } from './routes/NewEvent';
 
 function App() {
   const router = createBrowserRouter([
@@ -60,7 +60,7 @@ function App() {
                 { path: 'edit', element: <EditEventPage /> },
               ],
             },
-            { path: 'new', element: <NewEventPage /> },
+            { path: 'new', element: <NewEventPage />, action: newEventAction },
           ],
         },
       ],
