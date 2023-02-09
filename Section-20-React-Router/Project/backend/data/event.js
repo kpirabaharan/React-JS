@@ -60,7 +60,7 @@ async function replace(id, data) {
 async function remove(id) {
   const storedData = await readData();
   const updatedData = storedData.events.filter((ev) => ev.id !== id);
-  await writeData({events: updatedData});
+  await writeData({ events: updatedData });
 }
 
 exports.getAll = getAll;

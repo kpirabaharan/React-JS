@@ -12,12 +12,16 @@ export default NewEventPage;
 export async function action({ request, params }) {
   const data = await request.formData();
 
+  console.log('Test 0');
+
   const eventData = {
     title: data.get('title'),
     image: data.get('image'),
     date: data.get('date'),
     description: data.get('description'),
   };
+
+  console.log('Test 1');
 
   const response = await fetch('http://localhost:8080/events', {
     method: 'POST',
@@ -26,6 +30,8 @@ export async function action({ request, params }) {
     },
     body: JSON.stringify(eventData),
   });
+
+  console.log('Test 2');
 
   if (!response.ok) {
     throw json({ message: 'Could not save event!' }, { status: 500 });
