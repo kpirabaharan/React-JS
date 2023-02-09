@@ -39,11 +39,9 @@ function MainNavigation() {
               Newsletter
             </NavLink>
           </li>
-          <li>
-            <NewsletterSignup />
-          </li>
         </ul>
       </nav>
+      <NewsletterSignup />
     </header>
   );
 }

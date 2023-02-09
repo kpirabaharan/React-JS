@@ -3,12 +3,12 @@
   margin: auto;
   padding: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .list {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .list a {
