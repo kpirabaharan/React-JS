@@ -3,3 +3,4 @@ Projects/
 .idea/
 .tmp.driveupload
 *.eslintcache
+**node_modules/
