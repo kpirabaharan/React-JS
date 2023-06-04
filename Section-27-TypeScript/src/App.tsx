@@ -26,7 +26,13 @@ function App() {
     },
   ];
 
-  console.log(people);
+  function inserAtBeginning<T>(arr: T[], val: T) {
+    return [val, ...arr];
+  }
+  const demoArray = [1, 2, 3];
+  const updatedArray = inserAtBeginning(demoArray, -1);
+
+  console.log(updatedArray);
 }
 
 export default App;
