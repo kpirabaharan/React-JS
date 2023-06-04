@@ -8,7 +8,7 @@ export const fetchCartData = createAsyncThunk('cart/fetchData', async () => {
   );
 
   if (!response.ok) {
-    throw new Error('Fetch Respone Failed!');
+    throw new Error('Fetch Response Failed!');
   }
 
   const data = await response.json();

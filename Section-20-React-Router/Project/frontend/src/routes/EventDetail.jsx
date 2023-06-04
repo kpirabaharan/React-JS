@@ -32,7 +32,7 @@ function EventDetailPage() {
 export default EventDetailPage;
 
 const loadEvent = async (id) => {
-  const response = await fetch('http://localhost:8080/events/' + id);
+  const response = await fetch('http://localhost:8081/events/' + id);
 
   if (!response.ok) {
     throw json(
@@ -46,7 +46,7 @@ const loadEvent = async (id) => {
 };
 
 const loadEvents = async () => {
-  const response = await fetch('http://localhost:8080/events');
+  const response = await fetch('http://localhost:8081/events');
 
   if (!response.ok) {
     throw json({ message: 'Could not fetch events.' }, { status: 500 });
@@ -69,7 +69,7 @@ export async function loader({ request, params }) {
 export async function action({ request, params }) {
   const id = params.eventId;
 
-  const response = await fetch('http://localhost:8080/events/' + id, {
+  const response = await fetch('http://localhost:8081/events/' + id, {
     method: request.method,
   });
 

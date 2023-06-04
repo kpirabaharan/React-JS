@@ -90,7 +90,7 @@ export async function action({ request, params }) {
     description: data.get('description'),
   };
 
-  const response = await fetch('http://localhost:8080/events' + eventId, {
+  const response = await fetch('http://localhost:8081/events' + eventId, {
     method: request.method,
     headers: {
       'Content-Type': 'application/json',
